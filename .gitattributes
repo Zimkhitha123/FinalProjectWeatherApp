@@ -1,2 +1,62 @@
 # Auto detect text files and perform LF normalization
-* text=auto
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class = "Weather-Forecast">
+    
+        <header>
+            <form class="seach-form" id ="seach-form">
+            <input type = "Search" placeholder = "Enter a city" required class="search-form-input"/>
+            <input type = "Submit" value = "Search" class ="search-form-button"/>
+            </form>
+            </header>
+        <main>
+            <div class="weather-app-data" >  
+            <div >
+                <h1 class = "weather-app-city" id="city">
+                </h1> 
+                <p class="weather-app-details">
+                    <span id = "time"></span>
+                    <span id="description"></span>
+                    <br/>
+                <br/>
+                Humidity:<strong id="humidity"></strong></strong>, Wind: <strong id ="wind-speed"></strong>
+                </p> </div>
+                <div class="weather-app-temperatures">
+                    <div id="icon"></div>
+                    <div class ="weather-app-temperature-value" id ="temperature"></div>
+                    <div class="weather-app-unt">&deg C</div> </div>
+            </div>
+            <div class = "weather-forecast">
+                <div class="Weather-Forecast-day">
+                <div class="Weather-Forecast-date">Tues</div>
+                <div class="Weather-Forecast-icon">🌤️</div>
+                <div class="Weather-Forecast-temperatures">
+                <div class="Weather-Forecast-temperature">
+                <strong>15&deg C</strong></div>
+<div class ="Weather-Forecast-temperature">9&deg C </div>
+                </div>
+
+                </div>
+            </div>
+    </main>
+      </body> 
+            </body>
+            <footer>
+        <p>
+          This project was coded by
+          <a href="" target="_blank">Zimkhitha Mbanyaru</a> and is
+          <a href="hoverviewttps://github.com/" target="_blank"> on GitHub</a> and
+          <a href="https://app.netlify.com/teams/zimkhitha123/overview" target="_blank">hosted on Netlify</a>
+        </p>
+      </footer>
+    </div>
+    
+    <script src="java.js"></script>
+    </html>
+    
