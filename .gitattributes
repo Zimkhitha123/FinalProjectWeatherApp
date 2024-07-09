@@ -99,8 +99,89 @@
       </footer>
     </div>
     
-    <script src="Finaljava.js"></script>
     <stript>
-    
+    function displayForecast(response){
+    console.log(response.data);
+    getForecast(response.data.city);
+    let forecastElement = document.querySelector("#forecast");
+    let days = ["Tue","Wed","Thu","Fri","Sat"];
+    let forecastHTML = "";
+    forecastElement.innerHTML =forecastHTML;
+    response.data.dailt.forEach(function(day , index)){
+        if (index < 5){
+    forecastHTML = forecastHTML+ `<div class="weather-forecast-day">
+    <div class = "weather-forecast-date"> ${formatDate(day.time)}</div>
+    <img src = "${day.condition.icon-Url}" class = "weather-forecast-icon"></div>
+    <div class="weather-forecast-temperatures">
+    <div class ="weather-forecast-temperature"><strong> ${math.round(day.temperature.maximum)}&deg</strong></div>
+<div class = ""weather-forecast-temperature"><strong> ${math.round(day.temperature.minimum)}&deg</strong></div>
+   <div class = "weather-forecast-temperature">9&deg C</div>
+   </div>
+   </div>`;
+    }
+}
+}
+function updateWeather(response) {
+    let temperatureElement = document.querySelector("#temperature");
+    let temperature = response.data.temperature.current;
+    let cityElement = document.querySelector("#city");
+    cityElement.innerHTML = Math.round(temperature);
+
+    let descriptionElement = document.querySelector("#description");
+    descriptionElement.innerHTML = response.data.condition.description;
+
+    let humidityElement = document.querySelector("#humidity");
+    humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
+
+    let windSpeedElement = document.querySelector("#windspeed");
+    windSpeedElement.innerHTML = `${response.data.wind.speed} km/h`;
+
+    let date = new Date(response.data.time * 1000);
+    let timeElement = document.querySelector("#time");
+    timeElement.innerHTML = formatDate(date);
+
+    let iconElement = document.querySelector("#icon");
+    iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-app-icon"/>`;
+    displayForecast();
+
+}
+
+function searchCity(city) {
+    let apiKey = "d30t4b87a85aoafbb624a05843fdcb6d";
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+    axios.get(apiUrl).then(updateWeather);
+}
+
+function handleSearchSubmit(event) {
+    event.preventDefault();
+    let searchInput = document.querySelector("#search-form-input");
+    searchCity(searchInput.value);
+}
+
+function formatDate(date) {
+    let date = new S=Date(date * 1000);
+    let day = date.getDay();
+    let minutes = date.getMinutes();
+    let hours = date.getHours();
+    let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    let dayName = days[day];
+
+    if (minutes < 10) {
+        minutes = `0${minutes}`;
+    }
+
+    return days[date.getDay()];
+}
+function getForecast(city){
+    let apiKey = "d30t4b87a85aoafbb624a05843fdcb6d";
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query= ${city}&key= ${apiKey}&unit = metric`;
+
+}
+
+let searchFormElement = document.querySelector("#search-form");
+searchFormElement.addEventListener("submit", handleSearchSubmit);
+searchCity("paris");
+
     </stript>
+        <script src="Finaljava.js"></script>
     </html>
